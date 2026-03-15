@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twarze Rewolucji - Wersja Soft</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pink-light: #ffe3ec;
+            --pink-medium: #ffb7ce;
+            --pink-dark: #ff85a1;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--pink-light);
+            background-image: radial-gradient(#ffb7ce 1px, transparent 1px);
+            background-size: 30px 30px;
+            color: #5a4a4a;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+	.sticker {
+		position: fixed; 
+		font-size: 4.5rem; 
+		opacity: 0.2; 
+		z-index: -1; 
+	}
+
+	@media (max-width: 800px) {
+		.sticker {
+			display: none;
+		}
+	}
+
+	/* Ukrywamy naklejki na telefonach, żeby nie zasłaniały treści */
+	@media (max-width: 800px) {
+		.sticker {
+			display: none;
+		}
+	}
+        body::before { top: 10%; left: 5%; transform: rotate(-15deg); }
+        body::after { bottom: 10%; right: 5%; transform: rotate(15deg); }
+
+        header {
+            background-color: var(--white);
+            text-align: center;
+            padding: 80px 20px;
+            border-bottom: 8px dotted var(--pink-medium);
+            box-shadow: 0 5px 15px rgba(255, 183, 206, 0.3);
+        }
+
+        header h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5em;
+            color: var(--pink-dark);
+            margin: 0;
+            text-shadow: 2px 2px var(--pink-light);
+        }
+
+        header p {
+            font-size: 1.3em;
+            color: #888;
+            max-width: 600px;
+            margin: 20px auto 0;
+            font-style: italic;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        /* Nowa sekcja łącząca zdjęcie i rozbudowane fakty */
+        .fact-card {
+            background: var(--white);
+            border-radius: 40px;
+            border: 4px solid var(--pink-medium);
+            padding: 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(255, 133, 161, 0.15);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .fact-card::before {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--white);
+            padding: 0 10px;
+            font-size: 2em;
+        }
+
+        .fact-image {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 30px;
+            border: 5px solid var(--pink-light);
+            margin-bottom: 20px;
+            object-fit: cover;
+            filter: sepia(20%) brightness(105%);
+            transition: transform 0.3s ease;
+        }
+
+        .fact-image:hover {
+            transform: scale(1.03) rotate(-2deg);
+        }
+
+        .fact-content {
+            flex: 1;
+            text-align: left;
+        }
+
+        h2 {
+            color: var(--pink-dark);
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.8em;
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        h3 {
+            color: var(--pink-medium);
+            font-size: 1.4em;
+            border-bottom: 2px dashed var(--pink-light);
+            display: inline-block;
+            margin-top: 0;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        ul li::before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+            color: var(--pink-dark);
+        }
+
+        .nav-buttons {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            background-color: var(--pink-medium);
+            color: var(--white);
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: all 0.3s;
+            display: inline-block;
+            margin: 0 10px;
+            border: 2px solid var(--pink-dark);
+        }
+
+        .btn:hover {
+            background-color: var(--pink-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 133, 161, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            background-color: var(--white);
+            color: var(--pink-dark);
+            border-top: 8px dotted var(--pink-medium);
+            font-weight: bold;
+        }
+
+        @media (min-width: 768px) {
+            .fact-card {
+                flex-direction: row;
+                gap: 40px;
+                align-items: flex-start;
+            }
+            .fact-image {
+                margin-bottom: 0;
+            }
+            h2 {
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 2.5em; }
+            body::before, body::after { display: none; }
+        }
+    </style>
+</head>
+<body>
+<div class="sticker" style="top: 10%; left: 5%; transform: rotate(-15deg);">🌸</div>
+    <div class="sticker" style="top: 60%; left: 8%; transform: rotate(20deg);">🎀</div>
+    <div class="sticker" style="top: 35%; left: 15%; transform: rotate(-10deg);">✨</div>
+    
+    <div class="sticker" style="top: 15%; right: 5%; transform: rotate(15deg);">🌸</div>
+    <div class="sticker" style="top: 75%; right: 10%; transform: rotate(-25deg);">⭐</div>
+    <div class="sticker" style="top: 45%; right: 12%; transform: rotate(10deg);">🎀</div>
+    <div class="sticker" style="bottom: 5%; left: 45%; transform: rotate(-5deg);">✨</div>
+    <header>
+        <h1>Twarze Rewolucji</h1>
+        <p><b>Poznaj kluczowe postacie, które pociągały za sznurki w 1917 roku. Kto stał za największym przewrotem XX wieku? 🌸</b></p>
+    </header>
+
+    <div class="container">
+        
+        <div class="nav-buttons">
+            <a href="index.html" class="btn">Powrót do Strony Głównej</a>
+            <a href="wydarzenia.html" class="btn">Zobacz Wydarzenia ➔</a>
+        </div>
+
+        <div class="fact-card">
+            <img src="lenin.jpg" alt="Włodzimierz Lenin" class="fact-image">
+            <div class="fact-content">
+                <h2>Włodzimierz Lenin</h2>
+                <h3>Główny Architekt Zmian</h3>
+                <p>Urodzony jako Władimir Iljicz Uljanow. To on był niekwestionowanym liderem frakcji bolszewickiej i głównym ideologiem rewolucji październikowej. Wierzył, że Rosja jest gotowa na natychmiastowe przejście do socjalizmu.</p>
+                <ul>
+                    <li><strong>Zaplombowany pociąg:</strong> Lenin powrócił do Rosji ze Szwajcarii w kwietniu 1917 r. w specjalnym, zamkniętym pociągu udostępnionym przez... Niemców (którzy liczyli, że zdestabilizuje on Rosję).</li>
+                    <li><strong>Tezy kwietniowe:</strong> Jego słynny program. To tam padły proste, ale radykalne hasła: "Cała władza w ręce Rad!" oraz "Pokój, Ziemia, Chleb!".</li>
+                    <li><strong>Dyktatura Proletariatu:</strong> Lenin nie wierzył w demokrację parlamentarną. Stworzył system jednopartyjny, który utrzymał się przez kolejne 70 lat.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="fact-card">
+            <img src="lew.jpg" alt="Lew Trocki" class="fact-image">
+            <div class="fact-content">
+                <h2>Lew Trocki</h2>
+                <h3>Praktyczny Organizator</h3>
+                <p>Prawdziwe nazwisko to Lew Bronsztejn. Choć to Lenin był twarzą ideologiczną, to Trocki był geniuszem organizacyjnym, który technicznie zaplanował zbrojny zamach stanu w Piotrogrodzie.</p>
+                <ul>
+                    <li><strong>Komitet Wojskowo-Rewolucyjny:</strong> Trocki stanął na czele tego organu, który bezpośrednio wydał rozkazy zajęcia kluczowych punktów miasta (poczt, dworców, centrali telefonicznych).</li>
+                    <li><strong>Twórca Armii Czerwonej:</strong> Po udanej rewolucji to on zorganizował armię, która zapewniła bolszewikom zwycięstwo w brutalnej wojnie domowej.</li>
+                    <li><strong>Smutny koniec:</strong> Po śmierci Lenina przegrał walkę o władzę ze Stalinem, został wygnany i ostatecznie zamordowany w Meksyku w 1940 roku.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="fact-card">
+            <img src="carmik2.jpg" alt="Car Mikołaj II" class="fact-image">
+            <div class="fact-content">
+                <h2>Car Mikołaj II</h2>
+                <h3>Ostatni z Romanowów</h3>
+                <p>Rewolucja Październikowa nie obaliła Cara (zrobiła to Rewolucja Lutowa kilka miesięcy wcześniej), ale przypieczętowała jego ostateczny, tragiczny los.</p>
+                <ul>
+                    <li><strong>Kryzys władzy:</strong> Jego nieudolne dowodzenie w I wojnie światowej i wpływ Grigorija Rasputina na dwór carski doprowadziły imperium do ruiny i głodu.</li>
+                    <li><strong>Abdykacja:</strong> W marcu 1917 roku Mikołaj zrzekł się tronu, kończąc ponad 300-letnie rządy dynastii Romanowów w Rosji.</li>
+                    <li><strong>Egzekucja w Jekaterynburgu:</strong> W lipcu 1918 roku, z polecenia bolszewików, cała rodzina carska została rozstrzelana, aby zapobiec ich odbiciu przez "Białych".</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>made with love & history 🎀 &copy; 2026 Projekt: Klaudia Karczyńska i Natalia Garwolska.</p>
+    </footer>
+
+</body>
+</html>
